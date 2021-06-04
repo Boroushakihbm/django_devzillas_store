@@ -1,18 +1,8 @@
-from .abstract_models import department
-from .abstract_models import feature
+from ._models.department import Department
+from ._models.feature import Feature
 
 __all__ = []
 
-
-class Department(department.AbstractDepartment):
-    pass
-
-
 __all__.append('Department')
-
-
-class Feature(feature.AbstractFeature):
-    pass
-
 
 __all__.append('Feature')

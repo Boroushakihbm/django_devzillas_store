@@ -129,3 +129,6 @@ dmypy.json
 .pyre/
 .idea/workspace.xml
 .idea/workspace.xml
+.idea/devzilas_store.iml
+.idea/misc.xml
+.idea/workspace.xml

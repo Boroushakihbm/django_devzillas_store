@@ -25,8 +25,13 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/store" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\Desktop\Git\django_devzillas_store\store" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -79,6 +84,8 @@
       <workItem from="1622749575628" duration="16000" />
       <workItem from="1622749655036" duration="643000" />
       <workItem from="1622786549694" duration="5267000" />
+      <workItem from="1622795814245" duration="313000" />
+      <workItem from="1622800943853" duration="6174000" />
     </task>
     <servers />
   </component>

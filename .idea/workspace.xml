@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2e315e3a-4ac6-45ca-831a-b81ae655f4ff" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/store/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/serializer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/devzilas_store.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/devzilas_store.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/devzilas_store/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/devzilas_store/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/devzilas_store/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/devzilas_store/urls.py" afterDir="false" />
-    </list>
+    <list default="true" id="2e315e3a-4ac6-45ca-831a-b81ae655f4ff" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +78,7 @@
       <updated>1622749574505</updated>
       <workItem from="1622749575628" duration="16000" />
       <workItem from="1622749655036" duration="643000" />
-      <workItem from="1622786549694" duration="4759000" />
+      <workItem from="1622786549694" duration="5267000" />
     </task>
     <servers />
   </component>

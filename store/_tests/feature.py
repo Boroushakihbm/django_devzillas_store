@@ -1,91 +1,85 @@
 from rest_framework.test import APITestCase
-from rest_framework import status
 from ..models import Feature, Department
 from django.contrib.auth.models import User
-import json
+from . import rest_full_test
 
 
 class FeatureTests(APITestCase):
 
+    def setUp(self):
+        self.new_department_name = 'test department'
+        self.new_department_description = 'deparment description'
+        self.new_feature_name = 'test feature'
+        self.new_feature_description = 'feature description'
+
+        self.feature_list_url = '/store/feature/'
+        self.feature_detail_url = '/store/feature/{0}/'
+        self.feature_add_url = '/store/feature/add/'
+
+    def login_with_super_user(self):
+        user_name = 'admin'
+        email = 'admin@devzillas.com'
+        password = 'adminpassword'
+        self.superuser = User.objects.create_superuser(user_name,
+                                                       email,
+                                                       password)
+        self.client.login(username=user_name,
+                          password=password)
+
+    def add_department_to_database(self):
+        self.department = Department.objects.create(title=self.new_department_name,
+                                                    user=self.superuser)
+
+    def add_feature_to_database(self):
+        self.add_department_to_database()
+        self.feature = Feature.objects.create(title=self.new_feature_name,
+                                              user=self.superuser,
+                                              department=self.department)
+
     def test_login_failed(self):
-        response = self.client.get('/store/feature/', format='json')
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        rest_full_test.test_login_failed(self,
+                                         self.feature_list_url)
 
-    def test_department_list(self):
+    def test_feature_list(self):
+        self.login_with_super_user()
+        self.add_feature_to_database()
+        rest_full_test.test_get_list_api(self,
+                                         self.feature_list_url,
+                                         title=self.feature.title)
+
+    def test_feature_detail_get(self):
+        self.login_with_super_user()
+        self.add_feature_to_database()
+        url = self.feature_detail_url.format(str(self.feature.id))
+        rest_full_test.test_get_item_api(self,
+                                         url,
+                                         title=self.feature.title,
+                                         department_id=self.feature.department_id)
+
+    def test_feature_put(self):
+        self.login_with_super_user()
+        self.add_feature_to_database()
+        url = self.feature_detail_url.format(str(self.feature.id))
+        rest_full_test.test_put_api(self,
+                                    url,
+                                    title='test2',
+                                    description='my new description',
+                                    department_id=self.feature.department_id)
+
+    def test_feature_delete(self):
+        self.login_with_super_user()
+        self.add_feature_to_database()
+        url = self.feature_detail_url.format(str(self.feature.id))
+        rest_full_test.test_delete_api(self,
+                                       url)
+
+    def test_add_feature(self):
         # prepare data
-        self.superuser = User.objects.create_superuser('admin',
-                                                       'admin@devzillas.com',
-                                                       'adminpassword')
-        self.client.login(username='admin', password='adminpassword')
-        self.department = Department.objects.create(title='test', user=self.superuser)
-        self.feature = Feature.objects.create(title='test', user=self.superuser, department=self.department)
+        self.login_with_super_user()
+        self.add_feature_to_database()
+        rest_full_test.test_post_api(self,
+                                     self.feature_add_url,
+                                     title='add new department',
+                                     description='description of new department',
+                                     department_id=self.feature.department_id)
 
-        # run methods
-        response = self.client.get('/store/feature/', format='json')
-
-        # assertion
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        data = json.loads(response.content)
-        self.assertEqual(data[0]['title'], self.department.title)
-
-    def test_department_detail(self):
-        # prepare data
-        self.superuser = User.objects.create_superuser('admin',
-                                                       'admin@devzillas.com',
-                                                       'adminpassword')
-        self.client.login(username='admin', password='adminpassword')
-        self.department = Department.objects.create(title='test', user=self.superuser)
-        self.feature = Feature.objects.create(title='test', user=self.superuser, department=self.department)
-
-        # run methods
-        response_get = self.client.get('/store/feature/' +
-                                       str(self.feature.id) +
-                                       '/', format='json')
-
-        NEW_TITLE = 'test2'
-        NEW_DESCRIPTION = 'my new description'
-        data_put = {'title': NEW_TITLE, 'description': NEW_DESCRIPTION, 'department_id': 1}
-        response_put = self.client.put('/store/feature/' +
-                                       str(self.department.id) +
-                                       '/',
-                                       data_put,
-                                       format='json')
-
-        # get method assertion
-        self.assertEqual(response_get.status_code, status.HTTP_200_OK)
-
-        data = json.loads(response_get.content)
-        self.assertEqual(data['title'], self.feature.title)
-
-        # put method assertion
-        self.assertEqual(response_put.status_code, status.HTTP_200_OK)
-
-        data = json.loads(response_put.content)
-        self.assertEqual(data['title'], NEW_TITLE)
-        self.assertEqual(data['description'], NEW_DESCRIPTION)
-
-    def test_add_department(self):
-        # prepare data
-        self.superuser = User.objects.create_superuser('admin',
-                                                       'admin@devzillas.com',
-                                                       'adminpassword')
-        self.client.login(username='admin', password='adminpassword')
-        self.department = Department.objects.create(title='test', user=self.superuser)
-        self.feature = Feature.objects.create(title='test', user=self.superuser, department=self.department)
-
-        # run methods
-        TITLE = 'add new department'
-        DESCRIPTION = 'description of new department'
-        data = {'title': TITLE,
-                'description': DESCRIPTION,
-                'department_id': self.department.id
-                }
-        response = self.client.post('/store/feature/add/'
-                                    , data, format='json')
-
-        # assertion
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        data = json.loads(response.content)
-        self.assertEqual(data['title'], TITLE)
-        self.assertEqual(data['description'], DESCRIPTION)
-        self.assertEqual(data['department_id'], self.department.id)

@@ -1,10 +1,11 @@
-from ..models import Feature
+from ..models import Feature, Department
 from rest_framework import serializers
 
 
 class FeatureSerializer(serializers.HyperlinkedModelSerializer):
     department = serializers.StringRelatedField(many=False)
-    user = serializers.StringRelatedField(many=False)
+    department_id = serializers.PrimaryKeyRelatedField(queryset=Department.objects.all(),
+                                                       source='department')
 
     class Meta:
         model = Feature
@@ -16,7 +17,6 @@ class FeatureSerializer(serializers.HyperlinkedModelSerializer):
                   'rate',
                   'insert_date',
                   'update_date',
-                  'user_id',
-                  'user',
                   'department_id',
-                  'department', ]
+                  'department',
+                  'user_id', ]

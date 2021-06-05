@@ -19,3 +19,6 @@ class AddDepartment(generics.CreateAPIView):
     permission_classes = (permissions.IsAdminUser,)
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)

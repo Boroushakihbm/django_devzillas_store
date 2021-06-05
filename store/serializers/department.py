@@ -4,6 +4,9 @@ from rest_framework import serializers
 
 class DepartmentSerializer(serializers.HyperlinkedModelSerializer):
     parent_department = serializers.StringRelatedField(many=False)
+    parent_department_id = serializers.PrimaryKeyRelatedField(queryset=Department.objects.all(),
+                                                              source='parent_department',
+                                                              allow_null=True, read_only=False)
     user = serializers.StringRelatedField(many=False)
 
     class Meta:
@@ -14,5 +17,6 @@ class DepartmentSerializer(serializers.HyperlinkedModelSerializer):
                   'parent_department',
                   'insert_date',
                   'update_date',
-                  'user_id',
-                  'user', ]
+                  'user',
+                  'user_id']
+        # 'user',

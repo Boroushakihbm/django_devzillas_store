@@ -13,7 +13,9 @@ class Feature(models.Model):
     insert_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    department = models.ForeignKey(Department, on_delete=models.CASCADE, default=None)
+    department = models.ForeignKey(Department, on_delete=models.CASCADE,
+                                   related_name='department_id',
+                                   db_column='department')
 
     def __str__(self):
         return self.title

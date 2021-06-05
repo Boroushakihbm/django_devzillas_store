@@ -19,3 +19,6 @@ class AddFeature(generics.CreateAPIView):
     permission_classes = (permissions.IsAdminUser,)
     queryset = Feature.objects.all()
     serializer_class = FeatureSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)

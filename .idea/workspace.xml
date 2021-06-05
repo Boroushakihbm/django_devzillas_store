@@ -162,7 +162,7 @@
       <workItem from="1622786549694" duration="5267000" />
       <workItem from="1622795814245" duration="313000" />
       <workItem from="1622800943853" duration="7338000" />
-      <workItem from="1622832831375" duration="22483000" />
+      <workItem from="1622832831375" duration="26966000" />
     </task>
     <servers />
   </component>
@@ -190,6 +190,11 @@
           <line>60</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/store/_tests/department.py</url>
+          <line>87</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
@@ -209,6 +214,6 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/django_devzillas_store$test.coverage" NAME="test Coverage Results" MODIFIED="1622876504812" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/django_devzillas_store$test.coverage" NAME="test Coverage Results" MODIFIED="1622906099285" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

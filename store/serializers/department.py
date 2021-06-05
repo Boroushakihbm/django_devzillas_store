@@ -11,7 +11,8 @@ class DepartmentSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Department
-        fields = ['title',
+        fields = ['id',
+                  'title',
                   'description',
                   'parent_department_id',
                   'parent_department',
@@ -19,4 +20,3 @@ class DepartmentSerializer(serializers.HyperlinkedModelSerializer):
                   'update_date',
                   'user',
                   'user_id']
-        # 'user',

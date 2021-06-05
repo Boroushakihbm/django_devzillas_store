@@ -1,4 +1,5 @@
-from ..models import Feature, Department
+from ..models.department import Department
+from ..models.feature import Feature
 from rest_framework import serializers
 
 

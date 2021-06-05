@@ -1,4 +1,4 @@
-from ..models import Department
+from ..models.department import Department
 from rest_framework import generics, permissions
 from ..serializers.department import DepartmentSerializer
 

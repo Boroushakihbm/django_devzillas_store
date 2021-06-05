@@ -1,4 +1,4 @@
-from ..models import Feature
+from ..models.feature import Feature
 from rest_framework import generics, permissions
 from ..serializers.feature import FeatureSerializer
 

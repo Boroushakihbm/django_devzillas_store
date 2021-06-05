@@ -1,5 +1,6 @@
 from rest_framework.test import APITestCase
-from ..models import Feature, Department
+from ..models.department import Department
+from ..models.feature import Feature
 from django.contrib.auth.models import User
 from . import rest_full_test
 
@@ -82,4 +83,3 @@ class FeatureTests(APITestCase):
                                      title='add new department',
                                      description='description of new department',
                                      department_id=self.feature.department_id)
-

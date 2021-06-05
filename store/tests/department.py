@@ -1,6 +1,6 @@
 from rest_framework.test import APITestCase
-from store._tests import rest_full_test
-from ..models import Department
+from . import rest_full_test
+from ..models.department import Department
 from django.contrib.auth.models import User
 
 
